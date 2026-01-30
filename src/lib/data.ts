@@ -49,7 +49,7 @@ export const services: Service[] = [
     title: 'Wedding & Events Catering',
     description: 'Create unforgettable memories with our premium wedding and traditional function catering services.',
     icon: 'heart',
-    image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400',
+    image: '/images/PHOTO-2025-09-25-02-39-51.jpg',
   },
   {
     id: 'corporate-catering',
