@@ -42,7 +42,7 @@ export const services: Service[] = [
     title: 'Culinary & Hospitality Training',
     description: 'Comprehensive professional training programs in cake baking, local & international cuisine, pastry, and confectionery.',
     icon: 'graduation-cap',
-    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400',
+    image: '/images/PHOTO-2025-09-25-02-40-28.jpg',
   },
   {
     id: 'wedding-catering',
@@ -56,14 +56,14 @@ export const services: Service[] = [
     title: 'Corporate Catering',
     description: 'Executive lunches, conferences, gala dinners, and daily office lunch programs tailored to your needs.',
     icon: 'briefcase',
-    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400',
+    image: '/images/PHOTO-2025-09-25-02-50-18.jpg',
   },
   {
     id: 'restaurant-consulting',
     title: 'Restaurant Consulting',
     description: 'Menu development, kitchen operations, staff training, and quality control systems for your restaurant.',
     icon: 'chart-line',
-    image: 'https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?w=400',
+    image: '/images/PHOTO-2025-09-25-02-50-19.jpg',
   },
 ];
 
