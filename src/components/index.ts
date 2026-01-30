@@ -1,0 +1,11 @@
+export { default as Header } from './Header';
+export { default as Footer } from './Footer';
+export { default as HeroSlider } from './HeroSlider';
+export { default as ServiceCard } from './ServiceCard';
+export { default as CourseCard } from './CourseCard';
+export { default as TestimonialCard } from './TestimonialCard';
+export { default as ContactForm } from './ContactForm';
+export { default as SectionHeader } from './SectionHeader';
+export { default as WhatsAppButton } from './WhatsAppButton';
+export { default as PageHeader } from './PageHeader';
+export { default as FeatureCard } from './FeatureCard';
