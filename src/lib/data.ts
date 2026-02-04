@@ -2,61 +2,62 @@ import { Service, Course, Testimonial, ContactInfo, NavItem, HeroSlide } from '@
 
 export const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Services', href: '/services' },
+  { label: 'Corporate Catering', href: '/services#corporate' },
+  { label: 'Events', href: '/services#events' },
+  { label: 'Training', href: '/courses' },
   { label: 'Gallery', href: '/gallery' },
-  { label: 'Courses', href: '/courses' },
+  { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
 
 export const heroSlides: HeroSlide[] = [
   {
     id: '1',
-    image: '/images/PHOTO-2025-09-25-02-50-19.jpg',
-    title: 'Welcome to Classic Baking & Catering Uganda',
-    subtitle: 'Whether it\'s a wedding, corporate event, or private gathering, trust us to deliver a blend of local and international flavors that your guests will love.',
+    image: '/images/PHOTO-2025-09-25-02-50-18.jpg',
+    title: 'Corporate Catering That Reflects Your Brand',
+    subtitle: 'Professional, ISO-certified catering for offices, conferences, and corporate events across Uganda.',
   },
   {
     id: '2',
-    image: '/images/PHOTO-2025-09-25-02-40-28.jpg',
-    title: 'Professional Culinary Training',
-    subtitle: 'Transform your passion for cooking into a professional career',
+    image: '/images/gallery-15.jpeg',
+    title: 'Executive Dining Excellence',
+    subtitle: 'From daily office meals to executive boardroom lunches and large-scale conferences.',
   },
   {
     id: '3',
-    image: '/images/PHOTO-2025-09-25-02-39-51.jpg',
-    title: 'Premium Catering Services',
-    subtitle: 'Exceptional food experiences for every occasion',
+    image: '/images/gallery-12.jpeg',
+    title: 'Wedding & Events Catering',
+    subtitle: 'Create unforgettable memories with our premium catering for weddings and special occasions.',
   },
   {
     id: '4',
-    image: '/images/PHOTO-2025-09-25-02-50-18.jpg',
-    title: 'ISO 9001:2015 Certified',
-    subtitle: 'Quality and excellence in everything we do',
+    image: '/images/PHOTO-2025-09-25-02-40-28.jpg',
+    title: 'Professional Culinary Training',
+    subtitle: 'Our chefs don\'t just cook—we train the next generation of culinary professionals.',
   },
 ];
 
 export const services: Service[] = [
   {
-    id: 'culinary-training',
-    title: 'Culinary & Hospitality Training',
-    description: 'Comprehensive professional training programs in cake baking, local & international cuisine, pastry, and confectionery.',
-    icon: 'graduation-cap',
-    image: '/images/PHOTO-2025-09-25-02-40-28.jpg',
+    id: 'corporate-catering',
+    title: 'Corporate Catering',
+    description: 'Executive lunches, conferences, gala dinners, and daily office lunch programs tailored to your needs.',
+    icon: 'briefcase',
+    image: '/images/gallery-15.jpeg',
   },
   {
     id: 'wedding-catering',
     title: 'Wedding & Events Catering',
     description: 'Create unforgettable memories with our premium wedding and traditional function catering services.',
     icon: 'heart',
-    image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400',
+    image: '/images/gallery-12.jpeg',
   },
   {
-    id: 'corporate-catering',
-    title: 'Corporate Catering',
-    description: 'Executive lunches, conferences, gala dinners, and daily office lunch programs tailored to your needs.',
-    icon: 'briefcase',
-    image: '/images/PHOTO-2025-09-25-02-50-18.jpg',
+    id: 'culinary-training',
+    title: 'Culinary & Hospitality Training',
+    description: 'Comprehensive professional training programs in cake baking, local & international cuisine, pastry, and confectionery.',
+    icon: 'graduation-cap',
+    image: '/images/PHOTO-2025-09-25-02-40-28.jpg',
   },
   {
     id: 'restaurant-consulting',
@@ -232,33 +233,69 @@ export const contactInfo: ContactInfo = {
 
 export const features = [
   {
-    title: 'ISO 9001:2015 Certified',
-    description: 'Internationally recognized quality management standards',
-    icon: 'award',
-  },
-  {
-    title: 'Experienced Instructors',
-    description: 'Learn from industry professionals with years of experience',
+    title: 'Experienced & Professional Chefs',
+    description: 'Industry veterans with years of excellence',
     icon: 'users',
   },
   {
-    title: 'Hands-On Training',
-    description: 'Practical, kitchen-based learning for real-world skills',
-    icon: 'hand',
+    title: 'ISO 9001:2015 Certified',
+    description: 'International quality standards guaranteed',
+    icon: 'award',
   },
   {
-    title: 'Modern Facilities',
-    description: 'State-of-the-art training kitchens and equipment',
+    title: 'Timely & Flexible Delivery',
+    description: 'On-schedule service, every time',
+    icon: 'clock',
+  },
+  {
+    title: 'Modern State-of-the-Art Kitchen',
+    description: 'Premium equipment and facilities',
     icon: 'building-2',
   },
   {
-    title: 'Career Support',
-    description: 'Job placement assistance and business mentorship',
-    icon: 'trending-up',
+    title: 'Professional Service & Mentorship',
+    description: 'Dedicated support for every client',
+    icon: 'hand',
   },
   {
-    title: 'Flexible Schedules',
-    description: 'Weekend and evening classes available',
-    icon: 'calendar',
+    title: 'Local & International Cuisine',
+    description: 'Diverse flavors to suit any palate',
+    icon: 'utensils',
+  },
+];
+
+// Service Pillars for Homepage
+export const servicePillars = [
+  {
+    id: 'corporate-catering',
+    title: 'Corporate Catering',
+    description: 'Daily office meals, conferences, executive dining & galas',
+    icon: 'briefcase',
+    href: '/services#corporate',
+    items: ['Daily Office Meals', 'Conferences & Galas', 'Executive & VIP Catering'],
+  },
+  {
+    id: 'events-catering',
+    title: 'Events Catering',
+    description: 'Weddings, traditional functions & private celebrations',
+    icon: 'heart',
+    href: '/services#events',
+    items: ['Weddings', 'Traditional Functions', 'Private Parties'],
+  },
+  {
+    id: 'training-careers',
+    title: 'Training & Careers',
+    description: 'Professional culinary training and job placement',
+    icon: 'graduation-cap',
+    href: '/courses',
+    items: ['Culinary Training', 'Hospitality Courses', 'Job Placement'],
+  },
+  {
+    id: 'business-consulting',
+    title: 'Business & Consulting',
+    description: 'Restaurant setup, menu development & mentorship',
+    icon: 'chart-line',
+    href: '/services#consulting',
+    items: ['Restaurant Consulting', 'Menu Development', 'Business Mentorship'],
   },
 ];

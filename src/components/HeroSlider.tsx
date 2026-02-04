@@ -70,10 +70,10 @@ export default function HeroSlider() {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
                       <Link
-                        href="/courses"
+                        href="/contact?service=corporate"
                         className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold rounded-full bg-red-700 text-white transition-all duration-300 transform hover:bg-red-800 hover:scale-105 hover:shadow-xl hover:shadow-red-700/30 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                       >
-                        Explore Courses
+                        Get Corporate Catering
                         <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
@@ -82,7 +82,7 @@ export default function HeroSlider() {
                         href="/services"
                         className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold rounded-full bg-white/10 backdrop-blur-sm text-white border border-white/30 transition-all duration-300 transform hover:bg-white/25 hover:scale-105 hover:border-white/60 hover:shadow-xl hover:shadow-white/10 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50"
                       >
-                        Our Services
+                        View All Services
                       </Link>
                     </div>
                   </>
