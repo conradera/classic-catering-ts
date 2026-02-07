@@ -1,14 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import HeroSlider from '@/components/HeroSlider';
-import SectionHeader from '@/components/SectionHeader';
-import ServiceCard from '@/components/ServiceCard';
 import TestimonialCard from '@/components/TestimonialCard';
-import FeatureCard from '@/components/FeatureCard';
 import { Button } from '@/components/ui/button';
 import { services, testimonials, features, servicePillars } from '@/lib/data';
 
 export default function Home() {
+  const featuredServices = services.filter((s) => s.featured);
+  const remainingServices = services.filter((s) => !s.featured);
+
   return (
     <>
       {/* Hero Section */}
@@ -51,7 +51,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Premium Services Snapshot - NEW */}
+      {/* Premium Services Snapshot — Simplified cards */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -65,11 +65,11 @@ export default function Home() {
               What We <span className="text-red-700">Offer</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              From corporate catering to culinary training, we deliver excellence across every culinary need.
+              Comprehensive culinary solutions — from corporate catering to professional training and expert consulting.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {servicePillars.map((pillar) => (
               <Link
                 key={pillar.id}
@@ -77,28 +77,7 @@ export default function Home() {
                 className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-red-200 hover:shadow-xl transition-all duration-300"
               >
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-lg">
-                  {pillar.icon === 'briefcase' && (
-                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  )}
-                  {pillar.icon === 'heart' && (
-                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
-                  )}
-                  {pillar.icon === 'graduation-cap' && (
-                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                      <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-                    </svg>
-                  )}
-                  {pillar.icon === 'chart-line' && (
-                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                    </svg>
-                  )}
+                  <PillarIcon icon={pillar.icon} />
                 </div>
                 <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-red-700 transition-colors">
                   {pillar.title}
@@ -106,18 +85,8 @@ export default function Home() {
                 <p className="text-slate-600 text-sm mb-4">
                   {pillar.description}
                 </p>
-                <ul className="space-y-1">
-                  {pillar.items.map((item, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-sm text-slate-500">
-                      <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-5 flex items-center text-red-700 font-semibold text-sm group-hover:translate-x-1 transition-transform">
-                  Explore
+                <div className="flex items-center text-red-700 font-semibold text-sm group-hover:translate-x-1 transition-transform">
+                  Learn more
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -128,7 +97,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Preview Section */}
+      {/* About Preview Section — Condensed with value bullets */}
       <section className="py-24 bg-cream pattern-overlay corner-rings">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -140,32 +109,49 @@ export default function Home() {
                 About Us
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-6 leading-tight">
-                We Bring The Vibrant Flavors Of{' '}
-                <span className="text-red-700 elegant-underline">Culinary Excellence</span>
-                {' '}To Uganda
+                Vibrant Flavors.{' '}
+                <span className="text-red-700 elegant-underline">Professional Standards.</span>
               </h2>
-              <p className="text-slate-600 leading-relaxed mb-6 text-lg">
-                Founded in 2017, Classic Baking & Catering Uganda has established itself as a
-                leading provider of professional culinary training and premium catering services.
-                Our commitment to quality has earned us the prestigious ISO 9001:2015
-                certification.
-              </p>
               <p className="text-slate-600 leading-relaxed mb-8 text-lg">
-                From our state-of-the-art training facility in Kisaasi, Kampala, we have trained
-                hundreds of successful culinary professionals and catered for countless memorable
-                events across Uganda.
+                Founded in 2017, Classic Baking & Catering Uganda is an ISO 9001:2015 certified provider of premium catering and professional culinary training based in Kisaasi, Kampala.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Button href="/about" variant="primary" size="lg">
-                  Discover Our Story
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Button>
+
+              {/* Value bullets */}
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-4 h-4 text-red-700" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <p className="text-slate-700 text-base"><strong>Local ingredients, global standards</strong> — premium meals crafted from the freshest Ugandan produce.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-4 h-4 text-red-700" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <p className="text-slate-700 text-base"><strong>Professional service staff</strong> — trained, uniformed, and experienced in corporate event execution.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-4 h-4 text-red-700" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <p className="text-slate-700 text-base"><strong>Custom menus for corporate needs</strong> — tailored to your brand, dietary requirements, and event scale.</p>
+                </div>
               </div>
+
+              <Button href="/about" variant="primary" size="lg">
+                Discover Our Story
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Button>
             </div>
             <div className="relative">
-              {/* Decorative frame */}
               <div className="decorative-image">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                   <Image
@@ -207,7 +193,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Corporate Catering Solutions Section */}
+      {/* Featured Catering Solutions — Top 3 with badges + "View all" */}
       <section id="corporate" className="py-24 bg-cream pattern-overlay rings-top-right">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -220,23 +206,74 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-4">
               Catering That <span className="text-red-700">Elevates</span> Your Brand
             </h2>
-            <div className="section-divider my-6">
-              <svg className="w-8 h-8 text-red-700" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            </div>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              From daily office meals to executive boardroom lunches and large-scale conferences, we deliver professional, timely, and brand-aligned catering experiences.
+              From daily office meals to executive boardroom lunches and large-scale conferences.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service) => (
-              <ServiceCard key={service.id} service={service} />
+
+          {/* Featured Services — Top 3 */}
+          <div className="grid md:grid-cols-3 gap-8">
+            {featuredServices.map((service) => (
+              <div key={service.id} className="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                {service.badge && (
+                  <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-red-700 text-white text-xs font-semibold rounded-full shadow-lg">
+                    {service.badge}
+                  </div>
+                )}
+                {service.image && (
+                  <div className="relative h-52 overflow-hidden">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
+                  </div>
+                )}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-red-700 transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    {service.description}
+                  </p>
+                  <Link
+                    href={`/services#${service.id}`}
+                    className="inline-flex items-center gap-2 text-red-700 font-semibold text-sm hover:text-red-800 transition-colors"
+                  >
+                    Learn More
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
             ))}
           </div>
+
+          {/* Remaining services — compact row */}
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {remainingServices.map((service) => (
+              <Link
+                key={service.id}
+                href={`/services#${service.id}`}
+                className="group flex items-center gap-4 bg-white rounded-xl p-4 border border-slate-100 hover:border-red-200 hover:shadow-md transition-all"
+              >
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center flex-shrink-0">
+                  <CompactServiceIcon icon={service.icon} />
+                </div>
+                <div className="min-w-0">
+                  <h4 className="font-semibold text-slate-800 text-sm group-hover:text-red-700 transition-colors">{service.title}</h4>
+                  <p className="text-slate-500 text-xs truncate">{service.description}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+
           <div className="text-center mt-14">
             <Button href="/services" variant="primary" size="lg">
-              Explore Corporate Catering
+              View All Services
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
@@ -245,70 +282,45 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose Us Section - Trust Grid */}
-      <section className="py-16 bg-cream-dark">
+      {/* Why Choose Us — Metric-driven proof */}
+      <section className="py-24 bg-cream-dark">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-2">
-              Why Choose <span className="text-red-700">Classic Catering</span>
+          <div className="text-center mb-12">
+            <span className="premium-badge mb-4">
+              <svg className="w-5 h-5 text-red-700" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              Why Choose Us
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-3">
+              The Numbers <span className="text-red-700">Speak</span>
             </h2>
-            <p className="text-slate-600">
-              Excellence in every detail, from kitchen to table.
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Our track record is built on results, not just promises.
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, index) => (
-              <div key={index} className="bg-white rounded-xl p-4 text-center hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 mx-auto rounded-full bg-red-50 flex items-center justify-center mb-3">
-                  {feature.icon === 'users' && (
-                    <svg className="w-6 h-6 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                  )}
-                  {feature.icon === 'award' && (
-                    <svg className="w-6 h-6 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                    </svg>
-                  )}
-                  {feature.icon === 'clock' && (
-                    <svg className="w-6 h-6 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  )}
-                  {feature.icon === 'building-2' && (
-                    <svg className="w-6 h-6 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                    </svg>
-                  )}
-                  {feature.icon === 'hand' && (
-                    <svg className="w-6 h-6 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
-                    </svg>
-                  )}
-                  {feature.icon === 'utensils' && (
-                    <svg className="w-6 h-6 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    </svg>
-                  )}
+              <div key={index} className="bg-white rounded-2xl p-6 hover:shadow-lg transition-all duration-300 border border-slate-100 hover:-translate-y-1">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center shadow-lg">
+                    <WhyChooseIcon icon={feature.icon} />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-slate-800">{feature.metric}</p>
+                    <p className="text-xs text-slate-500 uppercase tracking-wider">{feature.metricLabel}</p>
+                  </div>
                 </div>
-                <h3 className="font-semibold text-slate-800 text-sm mb-1">{feature.title}</h3>
-                <p className="text-xs text-slate-500">{feature.description}</p>
+                <h3 className="font-bold text-slate-800 text-base mb-1.5">{feature.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{feature.description}</p>
               </div>
             ))}
-          </div>
-          <div className="text-center mt-8">
-            <Button href="/about" variant="outline" size="md">
-              See How We Work
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Button>
           </div>
         </div>
       </section>
 
-      {/* Audience Hook Section - NEW */}
-      <section className="py-20 bg-white rings-bottom-left">
+      {/* Audience Hook Section — with supporting text */}
+      <section className="py-24 bg-white rings-bottom-left">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="premium-badge mb-4">
@@ -329,7 +341,7 @@ export default function Home() {
             {/* Corporate/Events Card */}
             <Link
               href="/services#corporate"
-              className="group relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 text-white overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+              className="group relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 text-white overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/20 rounded-full blur-2xl" />
               <div className="relative z-10">
@@ -338,10 +350,11 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold mb-3">Planning an Event or Corporate Function?</h3>
-                <p className="text-slate-300 text-sm mb-6">
-                  From daily office meals to grand galas—professional catering that reflects your brand.
+                <h3 className="text-xl font-bold mb-2">Planning a Corporate Event?</h3>
+                <p className="text-slate-300 text-sm mb-1">
+                  Office meals, conferences, galas — professional catering that reflects your brand.
                 </p>
+                <p className="text-slate-400 text-xs mb-6">Serving 50 to 500+ guests</p>
                 <span className="inline-flex items-center text-yellow-400 font-semibold group-hover:translate-x-1 transition-transform">
                   View Catering Services
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -354,7 +367,7 @@ export default function Home() {
             {/* Training Card */}
             <Link
               href="/courses"
-              className="group relative bg-gradient-to-br from-red-700 to-red-800 rounded-2xl p-8 text-white overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+              className="group relative bg-gradient-to-br from-red-700 to-red-800 rounded-2xl p-8 text-white overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/20 rounded-full blur-2xl" />
               <div className="relative z-10">
@@ -364,10 +377,11 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold mb-3">Want to Learn Culinary Arts or Baking?</h3>
-                <p className="text-red-100 text-sm mb-6">
-                  Professional training programs with hands-on experience and job placement support.
+                <h3 className="text-xl font-bold mb-2">Want to Learn Culinary Arts?</h3>
+                <p className="text-red-100 text-sm mb-1">
+                  Hands-on training with job placement support.
                 </p>
+                <p className="text-red-200/60 text-xs mb-6">Certificates, diplomas & short courses</p>
                 <span className="inline-flex items-center text-yellow-400 font-semibold group-hover:translate-x-1 transition-transform">
                   Explore Training Programs
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -380,7 +394,7 @@ export default function Home() {
             {/* Business Consulting Card */}
             <Link
               href="/services#consulting"
-              className="group relative bg-gradient-to-br from-amber-600 to-amber-700 rounded-2xl p-8 text-white overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+              className="group relative bg-gradient-to-br from-amber-600 to-amber-700 rounded-2xl p-8 text-white overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
               <div className="relative z-10">
@@ -389,10 +403,11 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold mb-3">Starting or Improving a Food Business?</h3>
-                <p className="text-amber-100 text-sm mb-6">
-                  Expert consulting on menu development, kitchen setup, and business mentorship.
+                <h3 className="text-xl font-bold mb-2">Starting a Food Business?</h3>
+                <p className="text-amber-100 text-sm mb-1">
+                  Menu development, kitchen setup, and business mentorship.
                 </p>
+                <p className="text-amber-200/60 text-xs mb-6">From concept to launch</p>
                 <span className="inline-flex items-center text-white font-semibold group-hover:translate-x-1 transition-transform">
                   Get Expert Consulting
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -405,30 +420,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section - Corporate Focused */}
+      {/* CTA Section — Single primary goal */}
       <section className="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-red-950 relative overflow-hidden">
-        {/* Decorative elements */}
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-red-700/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-red-700/10 rounded-full blur-3xl" />
         </div>
-        {/* Pattern overlay */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}} />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-flex items-center gap-2 px-5 py-2 bg-white/10 backdrop-blur-sm text-white rounded-full text-sm font-medium mb-8 border border-white/20">
-            <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            Let&apos;s Work Together
-          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
             Ready for <span className="text-yellow-400">Premium Catering?</span>
           </h2>
-          <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
-            Whether it&apos;s corporate catering, a special event, or professional training—we&apos;re here to exceed your expectations.
+          <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
+            Tell us about your event and get a custom quote within 24 hours.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
@@ -463,13 +470,8 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-4">
               What Our <span className="text-red-700">Clients Say</span>
             </h2>
-            <div className="section-divider my-6">
-              <svg className="w-8 h-8 text-red-700" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            </div>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Hear from our graduates and clients about their experiences with Classic Catering Uganda.
+              Trusted by leading organizations across Uganda.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -520,22 +522,17 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-4">
               Moments We&apos;ve <span className="text-red-700">Catered</span>
             </h2>
-            <div className="section-divider my-6">
-              <svg className="w-8 h-8 text-red-700" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            </div>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              '/images/gallery-1.jpeg',
-              '/images/gallery-5.jpeg',
-              '/images/gallery-12.jpeg',
-              '/images/gallery-15.jpeg',
-              '/images/gallery-8.jpeg',
-              '/images/gallery-18.jpeg',
-              '/images/gallery-3.jpeg',
-              '/images/gallery-20.jpeg',
+              '/images/cla47jpgc.jpg',
+              '/images/56co.jpg',
+              '/images/cla53c.jpg',
+              '/images/gallery-wa-29.jpeg',
+              '/images/cla49c.jpg',
+              '/images/cake5c.jpg',
+              '/images/gallery-wa-33.jpeg',
+              '/images/events-outdoor.jpeg',
             ].map((src, index) => (
               <Link href="/gallery" key={index} className="relative aspect-square rounded-2xl overflow-hidden group cursor-pointer ring-4 ring-transparent hover:ring-red-200 transition-all">
                 <Image
@@ -567,4 +564,128 @@ export default function Home() {
       </section>
     </>
   );
+}
+
+function PillarIcon({ icon }: { icon: string }) {
+  const icons: Record<string, React.ReactNode> = {
+    briefcase: (
+      <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    ),
+    heart: (
+      <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+      </svg>
+    ),
+    cake: (
+      <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.701 2.701 0 01-1.5.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18z" />
+      </svg>
+    ),
+    leaf: (
+      <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+      </svg>
+    ),
+    globe: (
+      <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    'graduation-cap': (
+      <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path d="M12 14l9-5-9-5-9 5 9 5z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+      </svg>
+    ),
+    'chart-line': (
+      <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+      </svg>
+    ),
+    rocket: (
+      <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+      </svg>
+    ),
+    users: (
+      <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+    ),
+  };
+  return icons[icon] || icons['briefcase'];
+}
+
+function CompactServiceIcon({ icon }: { icon: string }) {
+  const icons: Record<string, React.ReactNode> = {
+    leaf: (
+      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+      </svg>
+    ),
+    globe: (
+      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    'graduation-cap': (
+      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path d="M12 14l9-5-9-5-9 5 9 5z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+      </svg>
+    ),
+    'chart-line': (
+      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+      </svg>
+    ),
+    rocket: (
+      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+      </svg>
+    ),
+    users: (
+      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+    ),
+  };
+  return icons[icon] || (
+    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+    </svg>
+  );
+}
+
+function WhyChooseIcon({ icon }: { icon: string }) {
+  const icons: Record<string, React.ReactNode> = {
+    users: (
+      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+    ),
+    award: (
+      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+      </svg>
+    ),
+    clock: (
+      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    'building-2': (
+      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+      </svg>
+    ),
+    hand: (
+      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
+      </svg>
+    ),
+  };
+  return icons[icon] || icons['award'];
 }

@@ -4,6 +4,8 @@ export interface Service {
   description: string;
   icon: string;
   image?: string;
+  badge?: string;
+  featured?: boolean;
 }
 
 export interface Course {
@@ -20,6 +22,7 @@ export interface Testimonial {
   id: string;
   name: string;
   role: string;
+  company?: string;
   content: string;
   image?: string;
 }

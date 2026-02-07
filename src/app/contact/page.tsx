@@ -15,6 +15,7 @@ export default function ContactPage() {
       <PageHeader
         title="Contact Us"
         description="We&apos;d love to hear from you. Get in touch with our team."
+        backgroundImage="/images/cla47jpgc.jpg"
       />
 
       {/* Contact Info Cards */}

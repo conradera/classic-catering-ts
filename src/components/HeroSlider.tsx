@@ -40,7 +40,7 @@ export default function HeroSlider() {
             className="object-cover"
             priority={index === 0}
           />
-          <div className="absolute inset-0 bg-slate-900/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/60 to-slate-900/80" />
         </div>
       ))}
 
@@ -73,17 +73,38 @@ export default function HeroSlider() {
                         href="/contact?service=corporate"
                         className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold rounded-full bg-red-700 text-white transition-all duration-300 transform hover:bg-red-800 hover:scale-105 hover:shadow-xl hover:shadow-red-700/30 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                       >
-                        Get Corporate Catering
+                        Request a Quote
                         <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
                       </Link>
                       <Link
                         href="/services"
-                        className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold rounded-full bg-white/10 backdrop-blur-sm text-white border border-white/30 transition-all duration-300 transform hover:bg-white/25 hover:scale-105 hover:border-white/60 hover:shadow-xl hover:shadow-white/10 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50"
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold rounded-full bg-transparent text-white border-2 border-white/40 transition-all duration-300 transform hover:bg-white/15 hover:scale-105 hover:border-white/70 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50"
                       >
-                        View All Services
+                        View Services
                       </Link>
+                    </div>
+                    {/* Trust markers */}
+                    <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-6 sm:mt-8 px-4">
+                      <div className="flex items-center gap-1.5 text-white/80 text-xs sm:text-sm">
+                        <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <span>50+ Corporate Clients</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 text-white/80 text-xs sm:text-sm">
+                        <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <span>500+ Events Catered</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 text-white/80 text-xs sm:text-sm">
+                        <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <span>ISO 9001:2015</span>
+                      </div>
                     </div>
                   </>
                 )}

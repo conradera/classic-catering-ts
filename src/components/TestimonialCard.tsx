@@ -26,7 +26,7 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
         </div>
         <div>
           <p className="font-semibold text-slate-800">{testimonial.name}</p>
-          <p className="text-red-700 text-sm">{testimonial.role}</p>
+          <p className="text-red-700 text-sm">{testimonial.role}{testimonial.company ? `, ${testimonial.company}` : ''}</p>
         </div>
       </div>
     </div>

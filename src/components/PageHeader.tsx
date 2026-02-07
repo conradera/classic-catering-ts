@@ -11,7 +11,7 @@ export default function PageHeader({ title, description, backgroundImage, extraB
       className={`relative pt-32 md:pt-40 ${extraBottomPadding ? 'pb-32 md:pb-40' : 'pb-20 md:pb-28'}`}
       style={{
         backgroundImage: backgroundImage
-          ? `linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.7)), url(${backgroundImage})`
+          ? `linear-gradient(to right, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.4)), url(${backgroundImage})`
           : undefined,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
