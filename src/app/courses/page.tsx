@@ -38,7 +38,7 @@ export default function CoursesPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {[
               { title: 'Baking & Pastry', icon: 'cake' },
               { title: 'Cookery & Catering', icon: 'utensils' },
@@ -82,10 +82,10 @@ export default function CoursesPage() {
                 <DetailItem label="Schedule" value="Morning / Afternoon / Evening" />
               </div>
               <div className="border-t border-slate-100 pt-6">
-                <div className="flex items-end justify-between">
+                <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
                   <div>
                     <p className="text-xs text-slate-500 uppercase tracking-wider">Tuition Fees</p>
-                    <p className="text-3xl font-bold text-slate-800">UGX 1,500,000</p>
+                    <p className="text-2xl sm:text-3xl font-bold text-slate-800">UGX 1,500,000</p>
                     <p className="text-xs text-slate-500 mt-1">Installment plans available</p>
                   </div>
                   <Button href="/contact?course=diploma" variant="primary" size="md">
@@ -144,10 +144,10 @@ export default function CoursesPage() {
                 <DetailItem label="Schedule" value="Weekday / Weekend" />
               </div>
               <div className="border-t border-slate-100 pt-6">
-                <div className="flex items-end justify-between">
+                <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
                   <div>
                     <p className="text-xs text-slate-500 uppercase tracking-wider">Tuition Fees</p>
-                    <p className="text-3xl font-bold text-slate-800">UGX 800,000</p>
+                    <p className="text-2xl sm:text-3xl font-bold text-slate-800">UGX 800,000</p>
                     <p className="text-xs text-slate-500 mt-1">Installment plans available</p>
                   </div>
                   <Button href="/contact?course=certificate" variant="primary" size="md">
@@ -212,12 +212,12 @@ export default function CoursesPage() {
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="bg-slate-800 text-white text-sm">
-                    <th className="px-6 py-4 text-left rounded-tl-xl font-semibold">Course</th>
-                    <th className="px-6 py-4 text-left font-semibold">Duration</th>
-                    <th className="px-6 py-4 text-left font-semibold">Schedule</th>
-                    <th className="px-6 py-4 text-left font-semibold">Time</th>
-                    <th className="px-6 py-4 text-left font-semibold">Fees (UGX)</th>
-                    <th className="px-6 py-4 text-right rounded-tr-xl font-semibold"></th>
+                    <th className="px-3 sm:px-6 py-4 text-left rounded-tl-xl font-semibold">Course</th>
+                    <th className="px-3 sm:px-6 py-4 text-left font-semibold">Duration</th>
+                    <th className="px-3 sm:px-6 py-4 text-left font-semibold">Schedule</th>
+                    <th className="px-3 sm:px-6 py-4 text-left font-semibold">Time</th>
+                    <th className="px-3 sm:px-6 py-4 text-left font-semibold">Fees (UGX)</th>
+                    <th className="px-3 sm:px-6 py-4 text-right rounded-tr-xl font-semibold"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -227,12 +227,12 @@ export default function CoursesPage() {
                     { course: 'Pastry Making', duration: '4 weeks', schedule: 'Saturday & Sunday', time: '9:00am - 3:00pm', fees: '500,000' },
                   ].map((row, i) => (
                     <tr key={i} className={`border-b border-slate-100 ${i % 2 === 0 ? 'bg-white' : 'bg-slate-50'} hover:bg-red-50/50 transition-colors`}>
-                      <td className="px-6 py-4 font-medium text-slate-800">{row.course}</td>
-                      <td className="px-6 py-4 text-sm text-slate-600">{row.duration}</td>
-                      <td className="px-6 py-4 text-sm text-slate-600">{row.schedule}</td>
-                      <td className="px-6 py-4 text-sm text-slate-600">{row.time}</td>
-                      <td className="px-6 py-4 font-semibold text-slate-800">{row.fees}</td>
-                      <td className="px-6 py-4 text-right">
+                      <td className="px-3 sm:px-6 py-4 font-medium text-slate-800">{row.course}</td>
+                      <td className="px-3 sm:px-6 py-4 text-sm text-slate-600">{row.duration}</td>
+                      <td className="px-3 sm:px-6 py-4 text-sm text-slate-600">{row.schedule}</td>
+                      <td className="px-3 sm:px-6 py-4 text-sm text-slate-600">{row.time}</td>
+                      <td className="px-3 sm:px-6 py-4 font-semibold text-slate-800">{row.fees}</td>
+                      <td className="px-3 sm:px-6 py-4 text-right">
                         <Link href="/contact?course=short" className="text-red-700 font-semibold text-sm hover:text-red-800 transition-colors">
                           Enroll &rarr;
                         </Link>
@@ -258,12 +258,12 @@ export default function CoursesPage() {
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="bg-slate-800 text-white text-sm">
-                    <th className="px-6 py-4 text-left rounded-tl-xl font-semibold">Course</th>
-                    <th className="px-6 py-4 text-left font-semibold">Duration</th>
-                    <th className="px-6 py-4 text-left font-semibold">Study Mode</th>
-                    <th className="px-6 py-4 text-left font-semibold">Time</th>
-                    <th className="px-6 py-4 text-left font-semibold">Fees (UGX)</th>
-                    <th className="px-6 py-4 text-right rounded-tr-xl font-semibold"></th>
+                    <th className="px-3 sm:px-6 py-4 text-left rounded-tl-xl font-semibold">Course</th>
+                    <th className="px-3 sm:px-6 py-4 text-left font-semibold">Duration</th>
+                    <th className="px-3 sm:px-6 py-4 text-left font-semibold">Study Mode</th>
+                    <th className="px-3 sm:px-6 py-4 text-left font-semibold">Time</th>
+                    <th className="px-3 sm:px-6 py-4 text-left font-semibold">Fees (UGX)</th>
+                    <th className="px-3 sm:px-6 py-4 text-right rounded-tr-xl font-semibold"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -274,12 +274,12 @@ export default function CoursesPage() {
                     { course: 'Pastry Making', duration: '2 weeks', mode: 'Flexible', time: 'Flexible', fees: '350,000' },
                   ].map((row, i) => (
                     <tr key={i} className={`border-b border-slate-100 ${i % 2 === 0 ? 'bg-white' : 'bg-slate-50'} hover:bg-red-50/50 transition-colors`}>
-                      <td className="px-6 py-4 font-medium text-slate-800">{row.course}</td>
-                      <td className="px-6 py-4 text-sm text-slate-600">{row.duration}</td>
-                      <td className="px-6 py-4 text-sm text-slate-600">{row.mode}</td>
-                      <td className="px-6 py-4 text-sm text-slate-600">{row.time}</td>
-                      <td className="px-6 py-4 font-semibold text-slate-800">{row.fees}</td>
-                      <td className="px-6 py-4 text-right">
+                      <td className="px-3 sm:px-6 py-4 font-medium text-slate-800">{row.course}</td>
+                      <td className="px-3 sm:px-6 py-4 text-sm text-slate-600">{row.duration}</td>
+                      <td className="px-3 sm:px-6 py-4 text-sm text-slate-600">{row.mode}</td>
+                      <td className="px-3 sm:px-6 py-4 text-sm text-slate-600">{row.time}</td>
+                      <td className="px-3 sm:px-6 py-4 font-semibold text-slate-800">{row.fees}</td>
+                      <td className="px-3 sm:px-6 py-4 text-right">
                         <Link href="/contact?course=short" className="text-red-700 font-semibold text-sm hover:text-red-800 transition-colors">
                           Enroll &rarr;
                         </Link>
@@ -309,11 +309,11 @@ export default function CoursesPage() {
                 <table className="w-full border-collapse">
                   <thead>
                     <tr className="bg-slate-800 text-white text-sm">
-                      <th className="px-6 py-4 text-left rounded-tl-xl font-semibold">Course</th>
-                      <th className="px-6 py-4 text-left font-semibold">Duration</th>
-                      <th className="px-6 py-4 text-left font-semibold">Study Mode</th>
-                      <th className="px-6 py-4 text-left font-semibold">Fees (UGX)</th>
-                      <th className="px-6 py-4 text-right rounded-tr-xl font-semibold"></th>
+                      <th className="px-3 sm:px-6 py-4 text-left rounded-tl-xl font-semibold">Course</th>
+                      <th className="px-3 sm:px-6 py-4 text-left font-semibold">Duration</th>
+                      <th className="px-3 sm:px-6 py-4 text-left font-semibold">Study Mode</th>
+                      <th className="px-3 sm:px-6 py-4 text-left font-semibold">Fees (UGX)</th>
+                      <th className="px-3 sm:px-6 py-4 text-right rounded-tr-xl font-semibold"></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -322,11 +322,11 @@ export default function CoursesPage() {
                       { course: 'Advanced Barista Skills', duration: '2 weeks', mode: 'Group or Individual', fees: '500,000' },
                     ].map((row, i) => (
                       <tr key={i} className={`border-b border-slate-100 ${i % 2 === 0 ? 'bg-white' : 'bg-slate-50'} hover:bg-red-50/50 transition-colors`}>
-                        <td className="px-6 py-4 font-medium text-slate-800">{row.course}</td>
-                        <td className="px-6 py-4 text-sm text-slate-600">{row.duration}</td>
-                        <td className="px-6 py-4 text-sm text-slate-600">{row.mode}</td>
-                        <td className="px-6 py-4 font-semibold text-slate-800">{row.fees}</td>
-                        <td className="px-6 py-4 text-right">
+                        <td className="px-3 sm:px-6 py-4 font-medium text-slate-800">{row.course}</td>
+                        <td className="px-3 sm:px-6 py-4 text-sm text-slate-600">{row.duration}</td>
+                        <td className="px-3 sm:px-6 py-4 text-sm text-slate-600">{row.mode}</td>
+                        <td className="px-3 sm:px-6 py-4 font-semibold text-slate-800">{row.fees}</td>
+                        <td className="px-3 sm:px-6 py-4 text-right">
                           <Link href="/contact?course=barista" className="text-red-700 font-semibold text-sm hover:text-red-800 transition-colors">
                             Enroll &rarr;
                           </Link>
@@ -385,7 +385,7 @@ export default function CoursesPage() {
             title="Why Choose Our Culinary Training?"
             description="What sets Classic Baking & Catering Uganda apart from the rest."
           />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {[
               { title: 'Hands-on Learning', desc: 'Practical, kitchen-based training from day one', icon: 'hand' },
               { title: 'Expert Instructors', desc: 'Industry-experienced professional trainers', icon: 'users' },

@@ -368,6 +368,7 @@ html {
 /* Corner rings for sections */
 .corner-rings {
   position: relative;
+  overflow: hidden;
 }
 
 .corner-rings::before {

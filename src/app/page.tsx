@@ -98,9 +98,9 @@ export default function Home() {
       </section>
 
       {/* About Preview Section — Condensed with value bullets */}
-      <section className="py-24 bg-cream pattern-overlay corner-rings">
+      <section className="py-16 md:py-24 bg-cream pattern-overlay corner-rings">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div>
               <span className="premium-badge mb-6">
                 <svg className="w-5 h-5 text-red-700" fill="currentColor" viewBox="0 0 20 20">
@@ -164,7 +164,7 @@ export default function Home() {
                 </div>
               </div>
               {/* Stats Card */}
-              <div className="absolute -bottom-8 -left-8 premium-card p-6 hidden md:block">
+              <div className="absolute -bottom-8 -left-8 premium-card p-6 hidden lg:block">
                 <div className="flex items-center gap-4">
                   <div className="ornate-frame">
                     <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center">
@@ -180,7 +180,7 @@ export default function Home() {
                 </div>
               </div>
               {/* Award Badge */}
-              <div className="absolute -top-6 -right-6 hidden md:block">
+              <div className="absolute -top-6 -right-6 hidden lg:block">
                 <div className="bg-gradient-to-br from-yellow-400 to-yellow-600 text-white rounded-full w-28 h-28 flex flex-col items-center justify-center shadow-xl border-4 border-white">
                   <svg className="w-8 h-8 mb-1" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -194,7 +194,7 @@ export default function Home() {
       </section>
 
       {/* Featured Catering Solutions — Top 3 with badges + "View all" */}
-      <section id="corporate" className="py-24 bg-cream pattern-overlay rings-top-right">
+      <section id="corporate" className="py-16 md:py-24 bg-cream pattern-overlay rings-top-right">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="premium-badge mb-4">
@@ -212,7 +212,7 @@ export default function Home() {
           </div>
 
           {/* Featured Services — Top 3 */}
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredServices.map((service) => (
               <div key={service.id} className="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 {service.badge && (
@@ -283,7 +283,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us — Metric-driven proof */}
-      <section className="py-24 bg-cream-dark">
+      <section className="py-16 md:py-24 bg-cream-dark">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="premium-badge mb-4">
@@ -320,7 +320,7 @@ export default function Home() {
       </section>
 
       {/* Audience Hook Section — with supporting text */}
-      <section className="py-24 bg-white rings-bottom-left">
+      <section className="py-16 md:py-24 bg-white rings-bottom-left">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="premium-badge mb-4">
@@ -341,7 +341,7 @@ export default function Home() {
             {/* Corporate/Events Card */}
             <Link
               href="/services#corporate"
-              className="group relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 text-white overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+              className="group relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/20 rounded-full blur-2xl" />
               <div className="relative z-10">
@@ -367,7 +367,7 @@ export default function Home() {
             {/* Training Card */}
             <Link
               href="/courses"
-              className="group relative bg-gradient-to-br from-red-700 to-red-800 rounded-2xl p-8 text-white overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+              className="group relative bg-gradient-to-br from-red-700 to-red-800 rounded-2xl p-6 sm:p-8 text-white overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/20 rounded-full blur-2xl" />
               <div className="relative z-10">
@@ -394,7 +394,7 @@ export default function Home() {
             {/* Business Consulting Card */}
             <Link
               href="/services#consulting"
-              className="group relative bg-gradient-to-br from-amber-600 to-amber-700 rounded-2xl p-8 text-white overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+              className="group relative bg-gradient-to-br from-amber-600 to-amber-700 rounded-2xl p-6 sm:p-8 text-white overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
               <div className="relative z-10">
@@ -421,7 +421,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section — Single primary goal */}
-      <section className="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-red-950 relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-red-950 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-red-700/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-red-700/10 rounded-full blur-3xl" />
@@ -458,7 +458,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 bg-cream pattern-overlay corner-rings">
+      <section className="py-16 md:py-24 bg-cream pattern-overlay corner-rings">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="premium-badge mb-4">
@@ -492,7 +492,7 @@ export default function Home() {
                 Subscribe to our newsletter for courses, events, and special offers.
               </p>
             </div>
-            <form className="flex w-full md:w-auto gap-3">
+            <form className="flex flex-col sm:flex-row w-full md:w-auto gap-3">
               <input
                 type="email"
                 placeholder="Enter your email"
@@ -510,7 +510,7 @@ export default function Home() {
       </section>
 
       {/* Gallery Preview Section */}
-      <section className="py-24 bg-white rings-top-right">
+      <section className="py-16 md:py-24 bg-white rings-top-right">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <span className="premium-badge mb-4">

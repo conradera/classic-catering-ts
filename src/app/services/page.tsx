@@ -27,10 +27,10 @@ export default function ServicesPage() {
           <section
             key={service.id}
             id={service.id}
-            className={`py-20 scroll-mt-20 ${isEven ? 'bg-white' : 'bg-cream pattern-overlay'}`}
+            className={`py-16 md:py-20 scroll-mt-20 ${isEven ? 'bg-white' : 'bg-cream pattern-overlay'}`}
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-              <div className={`grid lg:grid-cols-2 gap-12 items-center ${!isEven ? 'lg:grid-flow-dense' : ''}`}>
+              <div className={`grid lg:grid-cols-2 gap-6 lg:gap-12 items-center ${!isEven ? 'lg:grid-flow-dense' : ''}`}>
                 {/* Image */}
                 <div className={`relative ${!isEven ? 'lg:col-start-2' : ''}`}>
                   {service.image && (
@@ -40,13 +40,13 @@ export default function ServicesPage() {
                         alt={service.title}
                         width={600}
                         height={400}
-                        className="w-full h-[350px] object-cover"
+                        className="w-full h-[220px] sm:h-[280px] lg:h-[350px] object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent" />
                     </div>
                   )}
                   {/* Service number badge */}
-                  <div className="absolute -top-4 -left-4 w-14 h-14 rounded-full bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center shadow-lg border-4 border-white">
+                  <div className="absolute -top-3 sm:-top-4 -left-3 sm:-left-4 w-14 h-14 rounded-full bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center shadow-lg border-4 border-white">
                     <span className="text-white font-bold text-lg">{index + 1}</span>
                   </div>
                 </div>
@@ -81,7 +81,7 @@ export default function ServicesPage() {
       })}
 
       {/* Why Choose Us Section */}
-      <section className="py-24 bg-cream-dark pattern-overlay corner-rings">
+      <section className="py-16 md:py-24 bg-cream-dark pattern-overlay corner-rings">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <span className="premium-badge mb-4 inline-flex">
@@ -116,7 +116,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-red-950">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-red-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
             Ready to Get Started?
