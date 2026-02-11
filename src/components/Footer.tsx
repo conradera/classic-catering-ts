@@ -28,7 +28,7 @@ export default function Footer() {
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
               Professional culinary training and premium catering services since 2017.
-              ISO 9001:2015 certified excellence in everything we do.
+              ISO 45001:2018 certified excellence in everything we do.
             </p>
             <div className="flex items-center gap-4">
               <a
@@ -172,7 +172,7 @@ export default function Footer() {
             <div className="flex items-center gap-2">
               <Image
                 src="/images/certs.png"
-                alt="ISO 9001:2015 Certified"
+                alt="ISO 45001:2018 Certified"
                 width={120}
                 height={40}
                 className="opacity-70 hover:opacity-100 transition-opacity"

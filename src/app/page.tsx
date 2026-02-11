@@ -113,7 +113,7 @@ export default function Home() {
                 <span className="text-red-700 elegant-underline">Professional Standards.</span>
               </h2>
               <p className="text-slate-600 leading-relaxed mb-8 text-lg">
-                Founded in 2017, Classic Baking & Catering Uganda is an ISO 9001:2015 certified provider of premium catering and professional culinary training based in Kisaasi, Kampala.
+                Founded in 2017, Classic Baking & Catering Uganda is an ISO 45001:2018 certified provider of premium catering and professional culinary training based in Kisaasi, Kampala.
               </p>
 
               {/* Value bullets */}

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: '%s | Classic Catering Uganda',
   },
   description:
-    'Professional culinary training and premium catering services in Uganda. ISO 9001:2015 certified excellence since 2017.',
+    'Professional culinary training and premium catering services in Uganda. ISO 45001:2018 certified excellence since 2017.',
   keywords: [
     'catering',
     'culinary training',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: 'Classic Catering Uganda',
     title: 'Classic Baking & Catering Uganda',
     description:
-      'Professional culinary training and premium catering services in Uganda. ISO 9001:2015 certified excellence since 2017.',
+      'Professional culinary training and premium catering services in Uganda. ISO 45001:2018 certified excellence since 2017.',
   },
   twitter: {
     card: 'summary_large_image',

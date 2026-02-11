@@ -247,8 +247,8 @@ export const features = [
     metricLabel: 'Years Experience',
   },
   {
-    title: 'ISO 9001:2015 Certified',
-    description: 'Internationally certified food safety and quality management — your guarantee of consistent, hygienic, and reliable service.',
+    title: 'ISO 45001:2018 Certified',
+    description: 'Internationally certified occupational health & safety management — your guarantee of consistent, hygienic, and reliable service.',
     icon: 'award',
     metric: 'ISO',
     metricLabel: 'Certified',

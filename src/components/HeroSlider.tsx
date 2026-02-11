@@ -60,7 +60,7 @@ export default function HeroSlider() {
                 {index === currentSlide && (
                   <>
                     <span className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 bg-red-700/90 text-white text-xs sm:text-sm font-medium rounded-full mb-4 sm:mb-6">
-                      Since 2017 - ISO 9001:2015 Certified
+                      Since 2017 - ISO 45001:2018 Certified
                     </span>
                     <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2">
                       {slide.title}
@@ -103,7 +103,7 @@ export default function HeroSlider() {
                         <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
-                        <span>ISO 9001:2015</span>
+                        <span>ISO 45001:2018</span>
                       </div>
                     </div>
                   </>

@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Learn about Classic Baking & Catering Uganda - ISO 9001:2015 certified culinary training and premium catering services since 2017.',
+    'Learn about Classic Baking & Catering Uganda - ISO 45001:2018 certified culinary training and premium catering services since 2017.',
 };
 
 const values = [
@@ -37,7 +37,7 @@ const milestones = [
   { year: '2017', title: 'Founded', description: 'Classic Baking & Catering Uganda established in Kampala' },
   { year: '2018', title: 'First Graduates', description: 'Celebrated our first batch of professional culinary graduates' },
   { year: '2020', title: 'Expansion', description: 'Expanded facilities and launched corporate catering services' },
-  { year: '2022', title: 'ISO Certified', description: 'Achieved ISO 9001:2015 certification for quality management' },
+  { year: '2024', title: 'ISO Certified', description: 'Achieved ISO 45001:2018 certification for occupational health & safety management' },
   { year: '2024', title: '500+ Graduates', description: 'Reached milestone of training over 500 culinary professionals' },
 ];
 
@@ -77,7 +77,7 @@ export default function AboutPage() {
                   for success in the dynamic food industry.
                 </p>
                 <p>
-                  Our ISO 9001:2015 certification reflects our unwavering commitment to quality
+                  Our ISO 45001:2018 certification reflects our unwavering commitment to quality
                   in every aspect of our operations - from the ingredients we use to the training
                   we provide.
                 </p>
@@ -119,7 +119,7 @@ export default function AboutPage() {
               <div className="absolute -bottom-8 -right-8 bg-red-700 rounded-2xl p-6 shadow-xl hidden lg:block">
                 <Image
                   src="/images/certs.png"
-                  alt="ISO 9001:2015 Certified"
+                  alt="ISO 45001:2018 Certified"
                   width={150}
                   height={60}
                   className="brightness-200"
